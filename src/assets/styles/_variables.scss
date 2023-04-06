@@ -1,0 +1,36 @@
+@use "sass:color";
+
+@font-face {
+  font-family: "League Spartan";
+  src: url("../fonts/League_Spartan/LeagueSpartan-VariableFont_wght.ttf") format('truetype');
+  font-weight: 1 999;
+  /* bug de chrome con esta fuente. Normalmente basta con la línea de abajo  */
+  font-weight: 400 700 900;
+}
+
+@font-face {
+  font-family: "Roboto Slab";
+  font-weight: 400 700;
+  src: url("../fonts/Roboto_Slab/RobotoSlab-VariableFont_wght.ttf") format('truetype');
+}
+
+$font-family-sans-serif: 'League Spartan', sans-serif;
+$font-family-serif: 'Roboto Slab', sans-serif;
+
+$light-text-color:#7a7a7a;
+$dark-text-color:#333333;
+$red-logo-color:#FF5252;
+
+$uoc-corporate: #000078;
+$uoc-masterbrand: #73edff;
+$uoc-bg: color.scale($uoc-masterbrand, $lightness: 70%);
+/*Transparencia*/
+$hue : 0;
+$saturation: 0;
+$lightness:0;
+$alpha: 0.60;
+
+
+$mqMinWidth: 420px;
+//Tablet media query
+$breakpoint-tablet: 768px;

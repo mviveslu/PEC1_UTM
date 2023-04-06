@@ -1,0 +1,532 @@
+* {
+  box-sizing: border-box;
+
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  margin: 0;
+  font-family: $font-family-sans-serif;
+  font-size: 16px;
+  line-height: 24px;
+  //background-color: $uoc-bg;
+  color: $uoc-corporate;
+}
+
+.uoc-container {
+  max-width: 800px;
+  margin: auto;
+  padding: 2rem;
+  border-radius: 2rem;
+  text-align: center;
+  background-color: #fff;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
+    0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+.uoc-logo {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 1.5rem;
+  max-width: 200px;
+  height: auto;
+
+  @media (min-width: $mqMinWidth) {
+    max-width: none;
+  }
+}
+
+@mixin flex-column($direction,$aligment){
+    display: flex;
+    flex-direction: $direction;
+    text-align: $aligment;
+}
+
+.uoc-title {
+  font-family: $font-family-serif;
+  font-size: 24px;
+  font-weight: 700;
+  color: $uoc-corporate;
+
+  @media (min-width: $mqMinWidth) {
+    font-size: 36px;
+  }
+}
+
+.uoc-footer {
+  margin: 1.5rem 0;
+  font-size: 0.75rem;
+  height:50px;
+  @include flex-column(column,center)
+}
+
+span{
+  font-size: 1rem;
+}
+
+
+.main {
+  &__content {
+    max-width: 1400px;
+    margin: auto;
+    
+    &__section {
+      display: flex;
+      margin-top: 1rem;
+      gap: 40px;
+      padding: 1rem;
+      box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+      &--third{
+        max-height:350px;
+        margin-bottom:4rem;
+        @media (max-width: $breakpoint-tablet) {
+          max-height:none;
+        }
+      }
+      &__article {
+        
+        &--relative{
+          position:relative;
+          width: 100%;
+          overflow: hidden;
+        }
+        &__text{
+          position:absolute;
+          padding: 20%;
+          color: white;
+          position: absolute;
+          top: 0;
+          height: 100%;
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          background-color: hsl($hue, $saturation, $lightness);
+          background-color: rgba(hsl($hue, $saturation, $lightness), $alpha);
+          //background-color: rgba(0, 0, 0, 0.60);
+          p{
+            color: white;
+          }
+        }
+        &__image {
+          height: 200px;
+          border-radius: 4px;
+          overflow: hidden;
+          :hover{
+            cursor: pointer;
+            transform: scale(1.5);
+          }
+          &--bigger{
+            height: 450px;
+            img {
+              height: 100%;
+              width: 100%;
+              object-fit: cover;
+              object-position: center center;
+              :hover{
+                display: none;
+              }
+            }
+          }
+          img {
+            height: 100%;
+            width: 100%;
+            object-fit: cover;
+            object-position: center center;
+          }
+        }
+        &__button {
+          background-color: $red-logo-color;
+          width: 32px;
+          height: 32px;
+          line-height: 28px;
+          text-align: center;
+          font-size: 22px;
+          border: none;
+          -webkit-transition: 0.3s;
+          -o-transition: 0.3s;
+          transition: 0.3s;
+          color: #fff;
+          margin-top: 1rem;
+        }
+      }
+      @media (max-width: $breakpoint-tablet) {
+        flex-wrap: wrap;
+        &__article {
+          &__image {
+            height: 300px;
+            img {
+              height: 100%;
+              object-fit: cover;
+              object-position: center center;
+            }
+          }
+        }
+      }
+      
+    }
+    
+  }
+}
+
+
+/*Limpio*/
+h1,
+h2 {
+  font-family: $font-family-sans-serif;
+  text-transform: uppercase;
+  //color: var(--contrast-color);
+  letter-spacing: 1px;
+  text-align: center;
+  font-weight: 900;
+  font-size: 2rem;
+
+}
+
+h1 {
+  font-size: 5.5rem;
+  max-width: 700px;
+  line-height: 0.9em;
+  margin: 0 auto 20px auto;
+  font-weight: 900;
+  
+  @media (max-width: $breakpoint-tablet) {
+    font-size: 2.8rem;
+  }
+}
+h2,h3 {
+  color: $red-logo-color;
+}
+h2{
+  margin-top:3rem;
+  @media (max-width: $breakpoint-tablet) {
+    font-size: 1.8rem;
+  }
+}
+
+h3 {
+  font-size: 1.75rem;
+  margin: 1rem 0;
+  font-weight:600;
+  @media (max-width: $breakpoint-tablet) {
+    font-size: 1rem;
+  }
+
+}
+
+body {
+  font-family: $font-family-serif;
+  font-weight: 400;
+  //color: var(--text-color);
+  line-height: 1.5;
+  height: 100%;
+}
+
+p {
+  text-align: justify;
+  color: $light-text-color;
+  @media (max-width: $breakpoint-tablet) {
+    font-size: 1rem;
+  }
+}
+
+//BEM
+/*Header*/
+.header {
+  display: flex;
+  height: 100px;
+  width: 100%;
+  padding: 20px;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  background-color: white;
+  position: fixed;
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+  z-index: 10;
+  &__image {
+    &__link {
+      cursor: pointer;
+      img {
+        height: 4rem;
+        width: auto;
+      }
+    }
+  }
+  &__hamburger__menu {
+    width: 35px;
+    height: 25px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    cursor: pointer;
+    position: absolute;
+    right: 20px;
+    z-index: 12;
+    
+    @media screen and (min-width: $breakpoint-tablet) {
+      display: none;
+    }
+    &--change {
+      &__bar1 {
+        transform: rotate(-45deg) translate(-9px, 6px);
+      }
+
+      &__bar2 {
+        opacity: 0;
+      }
+
+      &__bar3 {
+        transform: rotate(45deg) translate(-9px, -6px);
+      }
+    }
+    &__bar1,
+    &__bar2,
+    &__bar3 {
+      width: 100%;
+      height: 3px;
+      background-color: #333;
+      transition: 0.3s;
+    }
+  }
+
+  &__navbar {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 60%;
+    height: 100%;
+    background-color: white;
+    display: flex;
+    transition: 0.5s;
+    padding: 50px;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+
+    &--show {
+      right: 0;
+    }
+
+    &__list {
+      display: flex;
+      flex-direction: column;
+      width: 70%;
+      align-items: center;
+      justify-content: flex-start;
+
+      &__item {
+        margin-top: 2rem;
+        //color: #444444;
+        text-decoration: none;
+        font-weight: bold;
+        position: relative;
+
+        a {
+          font-size: 24px;
+          color: $red-logo-color;
+          text-decoration: none;
+        }
+        :hover {
+          color: $dark-text-color;
+        }
+
+        ::after {
+          position: absolute;
+          content: "";
+          background-color: $dark-text-color;
+          bottom: -5px;
+          left: 0;
+          width: 0%;
+          height: 3px;
+          transition: 0.3s ease all;
+        }
+
+        :hover::after {
+          width: 100%;
+        }
+
+        @media screen and (min-width: $breakpoint-tablet) {
+          display: inline-block;
+          margin-top: 0;
+          margin-right: 2rem;
+        }
+      }
+
+      @media screen and (min-width: $breakpoint-tablet) {
+        width: 100%;
+        flex-direction: row;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: flex-end;
+        background: white;
+      }
+    }
+
+    @media screen and (min-width: $breakpoint-tablet) {
+      position: static;
+      margin-left: 0;
+      height: 100%;
+      box-shadow: none;
+      padding: 0;
+      width: auto;
+      transition: none;
+    }
+  }
+}
+
+/*Third section*/
+
+.main{
+  &__content{
+    &__section{
+      &__article{
+        &--concertContainer{
+          display: flex;
+          flex-direction: row;
+          gap: 40px;
+          width: 100%;
+          justify-content: center;
+          
+          @media (max-width: $breakpoint-tablet) {
+            flex-direction: column-reverse;
+          }
+        }
+        &__image{
+          &--palauSantJordi{
+            width: 100%;
+            display: flex;
+          }
+          &__img{
+            height:100%;
+            width: 100%;
+            object-fit:cover
+          }
+          
+
+        }
+        &__concertsInformation{
+          ::-webkit-scrollbar{
+            width: 8px;
+            height: 8px;
+          }
+          ::-webkit-scrollbar-track {
+            background-color: rgba(0, 0, 0, 0.1);
+            border-radius: 4px;
+          }
+          ::-webkit-scrollbar-thumb {
+            background-color: rgba(0, 0, 0, 0.3);
+            border-radius: 4px;
+          }
+          ::-webkit-scrollbar-thumb:hover {
+            background-color: rgba(0, 0, 0, 0.5);
+          }
+          width: 100%;
+          &__button{ 
+            border:none;
+            background-color: $light-text-color;
+            border-radius: 4px;
+            color:white;
+            width: 100%;
+            &--up{
+              span{
+                display: inline-block;
+                font-size: x-large;
+                font-weight: 900;
+                transform: rotate(-90deg);
+              }
+            }
+            &--down{
+              span{
+                display: inline-block;
+                font-size: x-large;
+                font-weight: 900;
+                transform: rotate(90deg);
+              }
+            }
+          }
+          &__list{
+            border-left: 1px solid #ecedef;
+            border-right: 1px solid #ecedef;
+            padding-left: 0;
+            height: 250px;
+            overflow-y: scroll;
+            
+            li:last-of-type{
+              border-bottom: 1px solid #ecedef;
+            }
+            
+            &__item{
+              
+              display: flex;
+              flex-direction: row;
+              align-items: center;
+              border-top: 1px solid #ecedef;
+              position: relative;
+              &__concertdata{
+                margin: 16px;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                &__date{
+                  display: flex;
+                  flex-direction: column;
+                  align-items: center;
+                  &--day{
+                    color:$dark-text-color;
+
+                  }
+                  &--month{
+                    color:$light-text-color;
+                  }
+                }
+                &__eventTag{
+                  border: 1px solid #dadce0;
+                  border-radius: 50%;
+                  color: #1a73e8;
+                  height: 30px;
+                  width: 30px;
+                  outline: none;
+                  display: flex;
+                  justify-content: center;
+                  align-items: center;
+                  &__tag{
+                    height: 15px;
+                    width: 15px;
+                    display: inline-block;
+                    fill: currentColor;
+                    margin-left: 1px;
+                  }
+
+                }
+              }
+              &__artistInformation{
+                display: flex;
+                flex-direction: column;
+                align-items: start;
+
+              }
+              &__imageArtist{
+                bottom: 0;
+                position: absolute;
+                right: 0;
+                text-align: center;
+                top: 0;
+                margin: 16;
+                width: 83px;
+                height: 83px;
+                img {
+                  height: 100%;
+                  width: 100%;
+                  border: 1px solid #dadce0;
+                  border-radius: 50%;
+               }
+
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
