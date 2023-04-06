@@ -10,12 +10,13 @@ body {
   flex-direction: column;
   height: 100vh;
   margin: 0;
-  font-family: $font-family-sans-serif;
+  font-family: $font-family-serif;
   font-size: 16px;
-  line-height: 24px;
+  line-height: 1.5;
   //background-color: $uoc-bg;
-  color: $uoc-corporate;
 }
+
+
 
 @mixin flex-column($direction,$aligment){
     display: flex;
@@ -84,13 +85,7 @@ h3 {
 
 }
 
-body {
-  font-family: $font-family-serif;
-  font-weight: 400;
-  //color: var(--text-color);
-  line-height: 1.5;
-  height: 100%;
-}
+
 
 p {
   text-align: justify;
@@ -293,6 +288,15 @@ p {
           }
         }
         &__image {
+          &--palauSantJordi{
+            width: 100%;
+            display: flex;
+          }
+          &__img{
+            height:100%;
+            width: 100%;
+            object-fit:cover
+          }
           height: 200px;
           border-radius: 4px;
           overflow: hidden;
@@ -344,19 +348,7 @@ p {
             flex-direction: column-reverse;
           }
         }
-        &__image{
-          &--palauSantJordi{
-            width: 100%;
-            display: flex;
-          }
-          &__img{
-            height:100%;
-            width: 100%;
-            object-fit:cover
-          }
-          
 
-        }
         &__concertsInformation{
           ::-webkit-scrollbar{
             width: 8px;
