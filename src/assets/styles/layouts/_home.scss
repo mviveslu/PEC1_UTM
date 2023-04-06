@@ -1,5 +1,7 @@
 * {
   box-sizing: border-box;
+  margin: 0;
+  padding:0;
 
 }
 
@@ -15,46 +17,13 @@ body {
   color: $uoc-corporate;
 }
 
-.uoc-container {
-  max-width: 800px;
-  margin: auto;
-  padding: 2rem;
-  border-radius: 2rem;
-  text-align: center;
-  background-color: #fff;
-  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
-    0 2px 4px -1px rgba(0, 0, 0, 0.06);
-}
-
-.uoc-logo {
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-  margin-bottom: 1.5rem;
-  max-width: 200px;
-  height: auto;
-
-  @media (min-width: $mqMinWidth) {
-    max-width: none;
-  }
-}
-
 @mixin flex-column($direction,$aligment){
     display: flex;
     flex-direction: $direction;
     text-align: $aligment;
 }
 
-.uoc-title {
-  font-family: $font-family-serif;
-  font-size: 24px;
-  font-weight: 700;
-  color: $uoc-corporate;
 
-  @media (min-width: $mqMinWidth) {
-    font-size: 36px;
-  }
-}
 
 .uoc-footer {
   margin: 1.5rem 0;
@@ -68,108 +37,7 @@ span{
 }
 
 
-.main {
-  &__content {
-    max-width: 1400px;
-    margin: auto;
-    
-    &__section {
-      display: flex;
-      margin-top: 1rem;
-      gap: 40px;
-      padding: 1rem;
-      box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
-      &--third{
-        max-height:350px;
-        margin-bottom:4rem;
-        @media (max-width: $breakpoint-tablet) {
-          max-height:none;
-        }
-      }
-      &__article {
-        
-        &--relative{
-          position:relative;
-          width: 100%;
-          overflow: hidden;
-        }
-        &__text{
-          position:absolute;
-          padding: 20%;
-          color: white;
-          position: absolute;
-          top: 0;
-          height: 100%;
-          display: flex;
-          flex-direction: column;
-          justify-content: center;
-          background-color: hsl($hue, $saturation, $lightness);
-          background-color: rgba(hsl($hue, $saturation, $lightness), $alpha);
-          //background-color: rgba(0, 0, 0, 0.60);
-          p{
-            color: white;
-          }
-        }
-        &__image {
-          height: 200px;
-          border-radius: 4px;
-          overflow: hidden;
-          :hover{
-            cursor: pointer;
-            transform: scale(1.5);
-          }
-          &--bigger{
-            height: 450px;
-            img {
-              height: 100%;
-              width: 100%;
-              object-fit: cover;
-              object-position: center center;
-              :hover{
-                display: none;
-              }
-            }
-          }
-          img {
-            height: 100%;
-            width: 100%;
-            object-fit: cover;
-            object-position: center center;
-          }
-        }
-        &__button {
-          background-color: $red-logo-color;
-          width: 32px;
-          height: 32px;
-          line-height: 28px;
-          text-align: center;
-          font-size: 22px;
-          border: none;
-          -webkit-transition: 0.3s;
-          -o-transition: 0.3s;
-          transition: 0.3s;
-          color: #fff;
-          margin-top: 1rem;
-        }
-      }
-      @media (max-width: $breakpoint-tablet) {
-        flex-wrap: wrap;
-        &__article {
-          &__image {
-            height: 300px;
-            img {
-              height: 100%;
-              object-fit: cover;
-              object-position: center center;
-            }
-          }
-        }
-      }
-      
-    }
-    
-  }
-}
+
 
 
 /*Limpio*/
@@ -375,12 +243,96 @@ p {
   }
 }
 
+
+
+
+
+
+
+
+
 /*Third section*/
 
 .main{
   &__content{
+    max-width: 1400px;
+    margin: auto;
     &__section{
+      display: flex;
+      margin-top: 1rem;
+      gap: 40px;
+      padding: 1rem;
+      box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+      &--third{
+        max-height:350px;
+        margin-bottom:4rem;
+        @media (max-width: $breakpoint-tablet) {
+          max-height:none;
+        }
+      }
       &__article{
+        &--relative{
+          position:relative;
+          width: 100%;
+          overflow: hidden;
+        }
+        &__text{
+          position:absolute;
+          padding: 20%;
+          color: white;
+          top: 0;
+          height: 100%;
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          background-color: hsl($hue, $saturation, $lightness);
+          background-color: rgba(hsl($hue, $saturation, $lightness), $alpha);
+          //background-color: rgba(0, 0, 0, 0.60);
+          p{
+            color: white;
+          }
+        }
+        &__image {
+          height: 200px;
+          border-radius: 4px;
+          overflow: hidden;
+          :hover{
+            cursor: pointer;
+            transform: scale(1.5);
+          }
+          &--bigger{
+            height: 450px;
+            img {
+              height: 100%;
+              width: 100%;
+              object-fit: cover;
+              object-position: center center;
+              :hover{
+                display: none;
+              }
+            }
+          }
+          img {
+            height: 100%;
+            width: 100%;
+            object-fit: cover;
+            object-position: center center;
+          }
+        }
+        &__button {
+          background-color: $red-logo-color;
+          width: 32px;
+          height: 32px;
+          line-height: 28px;
+          text-align: center;
+          font-size: 22px;
+          border: none;
+          -webkit-transition: 0.3s;
+          -o-transition: 0.3s;
+          transition: 0.3s;
+          color: #fff;
+          margin-top: 1rem;
+        }
         &--concertContainer{
           display: flex;
           flex-direction: row;
@@ -523,6 +475,19 @@ p {
                }
 
               }
+            }
+          }
+        }
+      }
+      @media (max-width: $breakpoint-tablet) {
+        flex-wrap: wrap;
+        &__article {
+          &__image {
+            height: 300px;
+            img {
+              height: 100%;
+              object-fit: cover;
+              object-position: center center;
             }
           }
         }
