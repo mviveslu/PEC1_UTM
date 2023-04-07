@@ -1,9 +1,9 @@
 <div id="contact" class="contact-container">
 
     <form onsubmit="onSubmit(event)">
-        <h2>CONTACT WITH US</h2>
+        <h2>CONTACTE CON NOSOTROS</h2>
         <div class="field">
-            <label class="label">Name</label>
+            <label class="label">Nombre</label>
             <div class="control">
                 <input class="input" type="text" placeholder="Text input">
             </div>
@@ -21,7 +21,7 @@
             </div>
         </div>
         <div class="field">
-            <label class="label">Message</label>
+            <label class="label">Mensaje</label>
             <div class="control">
                 <textarea class="textarea" placeholder="Textarea"></textarea>
             </div>
@@ -31,7 +31,7 @@
             <div class="control">
                 <label class="checkbox">
                     <input type="checkbox" required>
-                    I agree to the <a href="#">terms and conditions</a>
+                    Acepto <a href="#">términos y condiciones</a>
                 </label>
             </div>
         </div>
@@ -50,13 +50,7 @@
     
 </div>
 
-<script>
-
-    const onSubmit = (e) => {
-        e.preventDefault()
-    }
-
-</script>
+<script type="module" src="./assets/scripts/contact.js"></script>
 
 <style>
 
@@ -90,5 +84,22 @@ form{
 .button.is-link{
     background-color: #ff5252;
 }
-
+.button.is-link:hover{
+    background-color: #f21d1d;
+    color:white;
+}
+.field a{
+    color:#7a7a7a;
+}
+.field a:hover {
+    color: #363636;
+}
+.button.is-link.is-light {
+    color: #ff5252;
+    background-color: #eff1fa;
+}
+.button.is-link.is-light:hover {
+    background-color: #a4a4a5;
+    color:white;
+}
 </style>

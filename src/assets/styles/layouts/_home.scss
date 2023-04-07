@@ -1,13 +1,66 @@
+@mixin flex-direction($direction) {
+  display: flex;
+  flex-direction: $direction;
+}
+
+@mixin flex-direction-alignText($direction, $aligment) {
+  text-align: $aligment;
+  @include flex-direction($direction);
+}
+@mixin flex-direction-alignItems($direction, $aligmentItems) {
+  align-items: $aligmentItems;
+  @include flex-direction($direction);
+}
+
+@mixin flex-direction-justifycontent($direction, $justify) {
+  justify-content: $justify;
+  @include flex-direction($direction);
+}
+
+@mixin flex-direction-alignText-justifycontent(
+  $direction,
+  $aligment,
+  $justify
+) {
+  text-align: $aligment;
+  justify-content: $justify;
+  @include flex-direction($direction);
+}
+
+@mixin flex-direction-alignText-justifycontent-alignItems(
+  $direction,
+  $aligment,
+  $justify,
+  $aligmentItems
+) {
+  text-align: $aligment;
+  justify-content: $justify;
+  align-items: $aligmentItems;
+  @include flex-direction($direction);
+}
+
+@mixin flex-direction-justifycontent-alignItems(
+  $direction,
+  $justify,
+  $aligmentItems
+) {
+  justify-content: $justify;
+  align-items: $aligmentItems;
+  @include flex-direction($direction);
+}
+@mixin setHeightWidth($height, $width) {
+  height: $height;
+  width: $width;
+}
+
 * {
   box-sizing: border-box;
   margin: 0;
-  padding:0;
-
+  padding: 0;
 }
 
 body {
-  display: flex;
-  flex-direction: column;
+  @include flex-direction(column);
   height: 100vh;
   margin: 0;
   font-family: $font-family-serif;
@@ -16,30 +69,17 @@ body {
   //background-color: $uoc-bg;
 }
 
-
-
-@mixin flex-column($direction,$aligment){
-    display: flex;
-    flex-direction: $direction;
-    text-align: $aligment;
-}
-
-
-
 .uoc-footer {
   margin: 1.5rem 0;
+  padding-bottom: 4.5rem;
   font-size: 0.75rem;
-  height:50px;
-  @include flex-column(column,center)
+  height: 50px;
+  @include flex-direction-alignText(column, center);
 }
 
-span{
-  font-size: 1rem;
+span {
+  font-size: 0.75rem;
 }
-
-
-
-
 
 /*Limpio*/
 h1,
@@ -51,7 +91,6 @@ h2 {
   text-align: center;
   font-weight: 900;
   font-size: 2rem;
-
 }
 
 h1 {
@@ -60,16 +99,17 @@ h1 {
   line-height: 0.9em;
   margin: 0 auto 20px auto;
   font-weight: 900;
-  
+
   @media (max-width: $breakpoint-tablet) {
     font-size: 2.8rem;
   }
 }
-h2,h3 {
+h2,
+h3 {
   color: $red-logo-color;
 }
-h2{
-  margin-top:3rem;
+h2 {
+  margin-top: 3rem;
   @media (max-width: $breakpoint-tablet) {
     font-size: 1.8rem;
   }
@@ -78,14 +118,15 @@ h2{
 h3 {
   font-size: 1.75rem;
   margin: 1rem 0;
-  font-weight:600;
+  font-weight: 600;
   @media (max-width: $breakpoint-tablet) {
     font-size: 1rem;
   }
-
 }
-
-
+h4 {
+  font-size: 1.25rem;
+  font-weight: 600;
+}
 
 p {
   text-align: justify;
@@ -98,13 +139,14 @@ p {
 //BEM
 /*Header*/
 .header {
-  display: flex;
-  height: 100px;
-  width: 100%;
+  @include flex-direction-alignText-justifycontent-alignItems(
+    row,
+    center,
+    space-between,
+    center
+  );
+  @include setHeightWidth(100px, 100%);
   padding: 20px;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
   background-color: white;
   position: fixed;
   box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
@@ -119,16 +161,13 @@ p {
     }
   }
   &__hamburger__menu {
-    width: 35px;
-    height: 25px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
+    @include flex-direction-justifycontent(column, space-between);
+    @include setHeightWidth(25px, 35px);
     cursor: pointer;
     position: absolute;
     right: 20px;
     z-index: 12;
-    
+
     @media screen and (min-width: $breakpoint-tablet) {
       display: none;
     }
@@ -150,7 +189,7 @@ p {
     &__bar3 {
       width: 100%;
       height: 3px;
-      background-color: #333;
+      background-color: #ff5252;
       transition: 0.3s;
     }
   }
@@ -159,8 +198,7 @@ p {
     position: fixed;
     top: 0;
     right: -100%;
-    width: 60%;
-    height: 100%;
+    @include setHeightWidth(100%, 60%);
     background-color: white;
     display: flex;
     transition: 0.5s;
@@ -172,11 +210,12 @@ p {
     }
 
     &__list {
-      display: flex;
-      flex-direction: column;
+      @include flex-direction-justifycontent-alignItems(
+        column,
+        flex-start,
+        center
+      );
       width: 70%;
-      align-items: center;
-      justify-content: flex-start;
 
       &__item {
         margin-top: 2rem;
@@ -200,8 +239,7 @@ p {
           background-color: $dark-text-color;
           bottom: -5px;
           left: 0;
-          width: 0%;
-          height: 3px;
+          @include setHeightWidth(3px, 0%);
           transition: 0.3s ease all;
         }
 
@@ -229,104 +267,92 @@ p {
     @media screen and (min-width: $breakpoint-tablet) {
       position: static;
       margin-left: 0;
-      height: 100%;
+      @include setHeightWidth(100%, auto);
       box-shadow: none;
       padding: 0;
-      width: auto;
       transition: none;
     }
   }
 }
 
-
-
-
-
-
-
-
-
 /*Third section*/
 
-.main{
-  &__content{
+.main {
+  &__content {
     max-width: 1400px;
     margin: auto;
-    &__section{
+    &__section {
       display: flex;
       margin-top: 1rem;
       gap: 40px;
       padding: 1rem;
       box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
-      &--third{
-        max-height:350px;
-        margin-bottom:4rem;
+      &--third {
+        max-height: 350px;
+        margin-bottom: 4rem;
         @media (max-width: $breakpoint-tablet) {
-          max-height:none;
+          max-height: none;
         }
       }
-      &__article{
-        &--relative{
-          position:relative;
+      &__article {
+        &--relative {
+          border-radius: 20px;
+          position: relative;
           width: 100%;
           overflow: hidden;
         }
-        &__text{
-          position:absolute;
+        &__text {
+          position: absolute;
           padding: 20%;
           color: white;
           top: 0;
           height: 100%;
-          display: flex;
-          flex-direction: column;
-          justify-content: center;
-          background-color: hsl($hue, $saturation, $lightness);
+          @include flex-direction-justifycontent(column, center);
+
+          /*Function sass*/
           background-color: rgba(hsl($hue, $saturation, $lightness), $alpha);
-          //background-color: rgba(0, 0, 0, 0.60);
-          p{
+          p {
             color: white;
           }
         }
         &__image {
-          &--palauSantJordi{
+          &--palauSantJordi {
             width: 100%;
             display: flex;
           }
-          &__img{
-            height:100%;
-            width: 100%;
-            object-fit:cover
+          &__img {
+            @include setHeightWidth(100%, 100%);
+            object-fit: cover;
+            border-radius: 20px;
           }
           height: 200px;
-          border-radius: 4px;
+          border-radius: 20px;
           overflow: hidden;
-          :hover{
+          :hover {
             cursor: pointer;
             transform: scale(1.5);
           }
-          &--bigger{
+          &--bigger {
             height: 450px;
             img {
-              height: 100%;
-              width: 100%;
+              @include setHeightWidth(100%, 100%);
               object-fit: cover;
               object-position: center center;
-              :hover{
+              :hover {
                 display: none;
               }
             }
           }
           img {
-            height: 100%;
-            width: 100%;
+            @include setHeightWidth(100%, 100%);
             object-fit: cover;
             object-position: center center;
           }
         }
         &__button {
+          cursor: pointer;
           background-color: $red-logo-color;
-          width: 32px;
-          height: 32px;
+          @include setHeightWidth(32px, 32px);
           line-height: 28px;
           text-align: center;
           font-size: 22px;
@@ -337,22 +363,20 @@ p {
           color: #fff;
           margin-top: 1rem;
         }
-        &--concertContainer{
-          display: flex;
-          flex-direction: row;
+        &--concertContainer {
+          @include flex-direction-justifycontent(row, center);
+
           gap: 40px;
           width: 100%;
-          justify-content: center;
-          
+
           @media (max-width: $breakpoint-tablet) {
             flex-direction: column-reverse;
           }
         }
 
-        &__concertsInformation{
-          ::-webkit-scrollbar{
-            width: 8px;
-            height: 8px;
+        &__concertsInformation {
+          ::-webkit-scrollbar {
+            @include setHeightWidth(8px, 8px);
           }
           ::-webkit-scrollbar-track {
             background-color: rgba(0, 0, 0, 0.1);
@@ -366,22 +390,22 @@ p {
             background-color: rgba(0, 0, 0, 0.5);
           }
           width: 100%;
-          &__button{ 
-            border:none;
+          &__button {
+            border: none;
             background-color: $light-text-color;
             border-radius: 4px;
-            color:white;
+            color: white;
             width: 100%;
-            &--up{
-              span{
+            &--up {
+              span {
                 display: inline-block;
                 font-size: x-large;
                 font-weight: 900;
                 transform: rotate(-90deg);
               }
             }
-            &--down{
-              span{
+            &--down {
+              span {
                 display: inline-block;
                 font-size: x-large;
                 font-weight: 900;
@@ -389,83 +413,75 @@ p {
               }
             }
           }
-          &__list{
-            border-left: 1px solid #ecedef;
-            border-right: 1px solid #ecedef;
+          &__list {
+            border-left: $border;
+            border-right: $border;
             padding-left: 0;
             height: 250px;
             overflow-y: scroll;
-            
-            li:last-of-type{
-              border-bottom: 1px solid #ecedef;
-            }
-            
-            &__item{
-              
-              display: flex;
-              flex-direction: row;
-              align-items: center;
-              border-top: 1px solid #ecedef;
-              position: relative;
-              &__concertdata{
-                margin: 16px;
-                display: flex;
-                flex-direction: column;
-                align-items: center;
-                &__date{
-                  display: flex;
-                  flex-direction: column;
-                  align-items: center;
-                  &--day{
-                    color:$dark-text-color;
 
+            li:first-of-type {
+              border-top: none;
+            }
+
+            &__item {
+              @include flex-direction-alignItems(row, center);
+              border-top: $border;
+              position: relative;
+              &__concertdata {
+                margin: 1rem;
+
+                @include flex-direction-alignItems(column, center);
+                &__date {
+                  @include flex-direction-alignItems(column, center);
+                  &--day {
+                    color: $dark-text-color;
+                    font-size: 1rem;
+                    font-weight: 900;
                   }
-                  &--month{
-                    color:$light-text-color;
+                  &--month {
+                    color: $light-text-color;
+                    font-size: 1rem;
                   }
                 }
-                &__eventTag{
-                  border: 1px solid #dadce0;
+                &__eventTag {
+                  border: $border;
                   border-radius: 50%;
                   color: #1a73e8;
-                  height: 30px;
-                  width: 30px;
+                  @include setHeightWidth(30px, 30px);
                   outline: none;
-                  display: flex;
-                  justify-content: center;
-                  align-items: center;
-                  &__tag{
-                    height: 15px;
-                    width: 15px;
+                  @include flex-direction-justifycontent-alignItems(
+                    row,
+                    center,
+                    center
+                  );
+                  &__tag {
+                    @include setHeightWidth(15px, 15px);
                     display: inline-block;
                     fill: currentColor;
                     margin-left: 1px;
                   }
-
                 }
               }
-              &__artistInformation{
-                display: flex;
-                flex-direction: column;
-                align-items: start;
-
+              &__artistInformation {
+                @include flex-direction-alignItems(column, start);
               }
-              &__imageArtist{
+              &__imageArtist {
                 bottom: 0;
                 position: absolute;
                 right: 0;
                 text-align: center;
                 top: 0;
                 margin: 16;
-                width: 83px;
-                height: 83px;
+                @include setHeightWidth(64px, 64px);
+                @media screen and (max-width: $mqMinWidth) {
+                  @include setHeightWidth(35px, 35px);
+                }
                 img {
-                  height: 100%;
-                  width: 100%;
-                  border: 1px solid #dadce0;
+                  @include setHeightWidth(100%, 100%);
+                  border: $border;
                   border-radius: 50%;
-               }
-
+                }
               }
             }
           }

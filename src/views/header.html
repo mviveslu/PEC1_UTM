@@ -1,35 +1,21 @@
 <header class="header">
-    <div class="header__image">
-        <a class="header__image__link">
-            <img src="./assets/images/logo_whiteBg.png" alt="web page logo" class="header__image__link__image" />
-        </a>
-    </div>
-    <div class="header__hamburger__menu" onclick="toggleMenu()">
-        <div class="header__hamburger__menu__bar1"></div>
-        <div class="header__hamburger__menu__bar2"></div>
-        <div class="header__hamburger__menu__bar3"></div>
-    </div>
-    <nav class="header__navbar">
-        <ul class="header__navbar__list">
-            <li class="header__navbar__list__item"><a href="">Most visited</a></li>
-            <li class="header__navbar__list__item"><a href="">Events</a></li>
-            <li class="header__navbar__list__item"><a href="#contact">Contact us</a></li>
-        </ul>
-    </nav>
+  <div class="header__image">
+    <a class="header__image__link">
+      <img src="./assets/images/logo_whiteBg.png" alt="web page logo" class="header__image__link__image" />
+    </a>
+  </div>
+  <div class="header__hamburger__menu" onclick="toggleMenu()">
+    <div class="header__hamburger__menu__bar1"></div>
+    <div class="header__hamburger__menu__bar2"></div>
+    <div class="header__hamburger__menu__bar3"></div>
+  </div>
+  <nav class="header__navbar">
+    <ul class="header__navbar__list">
+      <li class="header__navbar__list__item"><a href="#most-visited">Más visitados</a></li>
+      <li class="header__navbar__list__item"><a href="#events">Eventos</a></li>
+      <li class="header__navbar__list__item"><a href="#contact">Contacte</a></li>
+    </ul>
+  </nav>
 </header>
-<script type="text/javascript" src="../classList.bem.js"></script>
-<script>
-let menuOpen = false;
-function toggleMenu() {
-  const menu = document.querySelector('.header__hamburger__menu');
-  const nav = document.querySelector('.header__navbar')
-  menuOpen = !menuOpen;
-  if (menuOpen) {
-    menu.classList.addModifier('change');
-    nav.classList.addModifier('show')
-  } else {
-    menu.classList.removeModifier('change');
-    nav.classList.removeModifier('show')
-  }
-}
-</script>
+<script type="text/javascript" src="./assets/scripts/classList.bem.js"></script>
+<script type="module" src="./assets/scripts/header.js"></script>
