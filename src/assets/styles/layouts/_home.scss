@@ -391,6 +391,7 @@ p {
           }
           width: 100%;
           &__button {
+            cursor:pointer;
             border: none;
             background-color: $light-text-color;
             border-radius: 4px;
@@ -428,6 +429,7 @@ p {
               @include flex-direction-alignItems(row, center);
               border-top: $border;
               position: relative;
+              cursor:pointer;
               &__concertdata {
                 margin: 1rem;
 
