@@ -18,4 +18,18 @@
   </nav>
 </header>
 <script type="text/javascript" src="./assets/scripts/classList.bem.js"></script>
-<script type="module" src="./assets/scripts/header.js"></script>
+<script>
+  let menuOpen = false;
+function toggleMenu() {
+  const menu = document.querySelector('.header__hamburger__menu');
+  const nav = document.querySelector('.header__navbar')
+  menuOpen = !menuOpen;
+  if (menuOpen) {
+    menu.classList.addModifier('change');
+    nav.classList.addModifier('show')
+  } else {
+    menu.classList.removeModifier('change');
+    nav.classList.removeModifier('show')
+  }
+}
+</script>
